@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- turn0245 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewWidgetF20TurnTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewWidgetF20TurnLabel_id}"/>
+                    <h:outputText value="#{widgetF20TurnController.selected.id}" title="#{bundle.ViewWidgetF20TurnTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewWidgetF20TurnLabel_name3378}"/>
+                    <h:outputText value="#{widgetF20TurnController.selected.name3378}" title="#{bundle.ViewWidgetF20TurnTitle_name3378}"/>
+                    <h:outputText value="#{bundle.ViewWidgetF20TurnLabel_quantity3378}"/>
+                    <h:outputText value="#{widgetF20TurnController.selected.quantity3378}" title="#{bundle.ViewWidgetF20TurnTitle_quantity3378}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{widgetF20TurnController.destroyAndView}" value="#{bundle.ViewWidgetF20TurnDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewWidgetF20TurnEditLink}"/>
+                <br />
+                <h:commandLink action="#{widgetF20TurnController.prepareCreate}" value="#{bundle.ViewWidgetF20TurnCreateLink}" />
+                <br />
+                <h:commandLink action="#{widgetF20TurnController.prepareList}" value="#{bundle.ViewWidgetF20TurnShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewWidgetF20TurnIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

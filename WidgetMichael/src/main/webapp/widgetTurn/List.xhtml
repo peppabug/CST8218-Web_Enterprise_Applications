@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- turn0245 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListWidgetF20TurnTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListWidgetF20TurnEmpty}" rendered="#{widgetF20TurnController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{widgetF20TurnController.items.rowCount > 0}">
+                    <h:outputText value="#{widgetF20TurnController.pagination.pageFirstItem + 1}..#{widgetF20TurnController.pagination.pageLastItem + 1}/#{widgetF20TurnController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{widgetF20TurnController.previous}" value="#{bundle.Previous} #{widgetF20TurnController.pagination.pageSize}" rendered="#{widgetF20TurnController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{widgetF20TurnController.next}" value="#{bundle.Next} #{widgetF20TurnController.pagination.pageSize}" rendered="#{widgetF20TurnController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{widgetF20TurnController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListWidgetF20TurnTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListWidgetF20TurnTitle_name3378}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name3378}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListWidgetF20TurnTitle_quantity3378}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.quantity3378}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{widgetF20TurnController.prepareView}" value="#{bundle.ListWidgetF20TurnViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{widgetF20TurnController.prepareEdit}" value="#{bundle.ListWidgetF20TurnEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{widgetF20TurnController.destroy}" value="#{bundle.ListWidgetF20TurnDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{widgetF20TurnController.prepareCreate}" value="#{bundle.ListWidgetF20TurnCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListWidgetF20TurnIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
